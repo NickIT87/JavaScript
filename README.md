@@ -1,2 +1,2 @@
 # front-end
-vue js exploring
+exploring the vue js 
