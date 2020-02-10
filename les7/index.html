@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>{{ title }} = {{ counter }}</h3>
+        <button v-on:click="riseCounter(5, 'changed to 5', $event)" >count_x5</button>
+        <button v-on:click="riseCounter(10, 'changed to 10', $event)" >count_x10</button>
+    </div>
+
+<script>
+
+var app = new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      title: 'counter'
+    },
+    methods: {
+        riseCounter: function(num, str, event) {
+            this.counter += num
+            this.title = str
+
+            if (num === 5) {
+                // blue
+                event.target.style.color = 'blue'
+            } else if (num === 10) {
+                // red
+                event.target.style.color = 'red'
+            }
+        }
+    }
+})
+
+</script>
+</body>
+</html>
