@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-on:input="changeName">
+        <h1>Hello {{ name }}</h1>
+        <h2>Number: {{ number }}</h2>
+        <h3>Method: {{ sayHello() }}</h3>
+        <h3> If statement: {{ isOk ? 'I am OK' : 'I am not ok!' }} </h3>
+        <h3>Functions: {{ string.split('').reverse().join('') }}</h3>
+    </div>
+
+    <div id="secondApp">
+        <h2>
+            <a v-bind:href="url">Google: {{ url }}</a>
+        </h2>
+        <h2 v-html="link"></h2>
+
+        <h3>Counter = {{ counter }}</h3>
+        <button v-on:click="riseCounter" >count</button>
+
+        <hr>
+
+        <h3 v-on:mouseover="onHover">Counter 2 = {{ counter2 }}</h3>
+        <button v-on:click="counter2++" >count</button>
+
+    </div>
+
+<script>
+
+var secapp = new Vue({
+    el: '#secondApp',
+    data: {
+        url: 'http://google.com',
+        link: '<a href="http://google.com">Google</a>',
+        counter: 0,
+        counter2: 0
+    },
+    methods: {
+        riseCounter: function() {
+            this.counter++
+        },
+        onHover: function(event) {
+            event.target.style.color = 'red'
+        }
+    }
+})
+
+
+var app = new Vue({
+    el: '#app',
+    data: {
+      name: 'Vue!',
+      number: 100,
+      isOk: true,
+      string: 'my name is nick'
+    },
+    methods: {
+        changeName: function() {
+            this.name = event.target.value
+        },
+        sayHello: function() {
+            return 'I am function'
+        }
+    }
+})
+
+</script>
+</body>
+</html>
