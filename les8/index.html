@@ -21,6 +21,10 @@
                 не изменять! 
             </span>
         </h2>
+
+        <hr>
+
+        <input type="text" v-on:keyup.enter="alertValue">
     </div>
 
 <script>
@@ -35,6 +39,12 @@ var app = new Vue({
         handleMouseMove: function(event) {
             this.x = event.clientX
             this.y = event.clientY
+        },
+        alertValue: function(event) {
+            //if (event.keyCode === 13) {
+            //    alert(event.target.value)
+            //}
+            alert(event.target.value)
         }
     }
 })
