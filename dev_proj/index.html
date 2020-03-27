@@ -5,26 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- development version, includes helpful console warnings -->
+    <!-- BOOTSTRAP 3.4.1 Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- jquery 3.X Latest compiled and minified JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP 3.4.1 Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <!-- VUE JS development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+<!--    BODY HTML    -->
 <body>
-    <div id="app">
-        
-        <h2>
-            <a :href="url">Google</a>
-        </h2>
+<!--    BODY HTML    -->
+<div id="app">        
+    <h2>
+        <a :href="url">Google</a>
+    </h2>
 
-        <h2>
-            Counter: {{ counter }}
-        </h2>
+    <h2>
+        Counter: {{ counter }}
+    </h2>
 
-        <button @click="counter++">Rise</button>
+    <button @click="counter++">Rise</button>
 
-    </div>
+</div>
+<!--    END BODY HTML    -->
 
+<!--    VUE SCRIPTS    -->
 <script>
-
+/*      VUE SCRIPTS     */
 var app = new Vue({
     el: '#app',
     data: {
@@ -35,7 +44,7 @@ var app = new Vue({
        
     }
 })
-
+/*    END VUE SCRIPTS   */
 </script>
 </body>
 </html>
