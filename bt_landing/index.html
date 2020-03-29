@@ -46,9 +46,43 @@
 		  background: #5E4485;
 		  border: 2px solid #FFF;
 	  }
+	
+	  .container {
+		  margin: 4% auto;
+	  }
+
+      .brand_tech_icon {
+		  max-width: 200px;
+		  margin: 1% auto;
+	  }
+
+	  footer {
+		  width: 100%;
+		  background-color: #5E4485;
+		  padding: 3%;
+		  color: #FFF;
+	  }
+
+	  .fa {
+	      padding: 15px;
+		  font-size: 25px !important; 
+		  color: #FFF;
+	  }
+
+	  .fa:hover {
+	      color: #D5D5D5;
+		  text-decoration: none;
+	  }
+
 	  @media (max-width: 600px) {
 		  .carousel-caption {
 			  display: none;
+		  }
+		  .brand_tech_icon {
+			  max-width: 150px;
+		  }
+		  h2 {
+			  font-size: 1.9em;
 		  }
 	  } 
 
@@ -111,13 +145,90 @@
 	</a>
 </div> <!-- End Slider -->
 
+<div class="container text-center">
+	<h2>What We`re using</h2>
+	<div class="row">
+		<div class="col-sm-4">
+			<img src="img/html5.png" class="brand_tech_icon">
+			<h4>HTML 5</h4>
+		</div>
+		<div class="col-sm-4">
+			<img src="img/bootstrap.png" class="brand_tech_icon">
+			<h4>Bootstrap</h4>
+		</div>
+		<div class="col-sm-4">
+			<img src="img/css3.png" class="brand_tech_icon">
+			<h4>CSS 3</h4>
+		</div>
+	</div>	
+</div>
 
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h4> Here`s the cool thing about Bootstrap... </h4>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium ex quaerat nostrum suscipit dolores! Ea velit eius explicabo eveniet quas repellat. Ab vel hic velit nam voluptatem earum, excepturi pariatur.</p>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium ex quaerat nostrum suscipit dolores! Ea velit eius explicabo eveniet quas repellat. Ab vel hic velit nam voluptatem earum, excepturi pariatur.</p>
+		</div>
+		<div class="col-md-6">
+			<img src="img/bootstrap2.jpg" class="img-responsive">
+		</div>
+	</div>
+</div>
 
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<h4>Built with Sass</h4>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis cum iusto perspiciatis fugiat accusantium dolor a ipsam, possimus amet eos, laudantium consectetur consequatur vitae, blanditiis mollitia maiores autem neque tempora!</p>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<img src="img/sass.png" width="100%" height="100%" class="img-responcive">
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<h4>And Less</h4>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis cum iusto perspiciatis fugiat accusantium dolor a ipsam, possimus amet eos, laudantium consectetur consequatur vitae, blanditiis mollitia maiores autem neque tempora!</p>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<img src="img/less.png" width="100%" height="100%" class="img-responcive">
+		</div> 
+	</div>
+</div>
 
+<div class="container">
+	<div class="row">
+		<h4><a href="#hidden" data-toggle="collapse">Care to learn more about Bootstrap?</a></h4>
+		<div id="hidden" class="collapse">
 
-
-
+		</div>
+		<h4> Here`s the cool thing about Bootstrap... </h4>
+		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium ex quaerat nostrum suscipit dolores! Ea velit eius explicabo eveniet quas repellat. Ab vel hic velit nam voluptatem earum, excepturi pariatur.</p>
+		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium ex quaerat nostrum suscipit dolores! Ea velit eius explicabo eveniet quas repellat. Ab vel hic velit nam voluptatem earum, excepturi pariatur.</p>
+	</div>
+</div>
   
+<footer class="container-fluid text-center">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Contact Us</h3>
+            <br>
+            <h4>Our address and contact info here.</h4>
+        </div>
+        <div class="col-sm-4">
+            <h3>Connect</h3>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-youtube"></a>
+        </div>
+        <div class="col-sm-4">
+            <br>
+            <img src="img/bunny.png" class="icon">
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
