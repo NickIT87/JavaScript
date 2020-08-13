@@ -11,9 +11,7 @@
     <script src="static/js/three.min.js"></script>
 </head>
 <body>
-    
-<h1>Test Three.js</h1>
-
+<!-- HTML BODY --> 
 
 <script type="module">
 
@@ -32,16 +30,21 @@ function init() {
     renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
-    
-    
+
+    // main logic  
+    scene.add(lines());
+
+    // start app
+    renderer.render(scene, camera);
+}
+
+
+function lines() {
     var line_geometry = new THREE.Geometry();
     line_geometry.vertices.push(new THREE.Vector3(0,0,0));
-    line_geometry.vertices.push(new THREE.Vector3(0,40,0));
+    line_geometry.vertices.push(new THREE.Vector3(0,150,0));
     var line = new THREE.Line(line_geometry);
-    scene.add(line);
-  
-    
-    renderer.render(scene, camera);
+    return line;
 }
 
 </script>    
