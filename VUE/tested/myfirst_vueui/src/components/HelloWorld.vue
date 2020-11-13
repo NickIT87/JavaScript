@@ -1,6 +1,12 @@
 <template>
   <div class="hello">
+    
+    <img alt="Vue logo" src="../assets/logo.png">
+
     <h1>{{ msg }}</h1>
+
+    <h2>My hello world!</h2>
+
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
