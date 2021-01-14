@@ -1,3 +1,4 @@
+"use strict";
 var nums = 42;
 var testes = 'Hello world';
 console.log(testes, nums);
@@ -16,3 +17,4 @@ function majority(a, b) {
     //return 0
 }
 majority(arsr1, arsr2);
+//# sourceMappingURL=mindstorm.js.map
