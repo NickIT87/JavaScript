@@ -11,5 +11,8 @@ export class AppComponent {
 }
 
 function sum(a: number, b: number): number {
+  console.log(ats(2,3))
   return a + b
 }
+
+let ats = (a: number, b: number):number => a * b
