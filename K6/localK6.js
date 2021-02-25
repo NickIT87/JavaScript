@@ -12,5 +12,6 @@ export let options = {
 export default function() {
     let res = http.get('http://192.168.0.103/test');
     check(res, {'status was 200': r => r.status == 200 });
+    //console.log("before sleep"); // run many times
     sleep(1);
 }
