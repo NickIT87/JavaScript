@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultilangWebsite</title>
+</head>
+<body>
+    <a href="#eng" data-reload>English</a>
+    <a href="#rus" data-reload>Russian</a>
+
+    <p id="hi"> blank text </p>
+
+    <script>
+        // language reload anchors
+        var dataReload = document.querySelectorAll("[data-reload]");
+
+        var language = {
+            eng: {
+                welcome: "welcome eng"
+            },
+            rus: {
+                welcome: "Добро пожаловать"
+            }
+        }
+
+        // define lang via window hash
+        if (window.location.hash) {
+            if (window.location.hash === "#rus") {
+                hi.textContent = language.rus.welcome;
+            }
+            /*
+            if (window.location.hash === "#eng") {
+                hi.textContent = language.eng.welcome;
+            }
+            */
+        }
+
+        // lang reload click iteration
+        /*
+        for (i = 0; i <= dataReload.length; i++) {
+            dataReload[i].onclick = function() {
+                location.reload(true)
+            }
+        }
+        */
+        for (i = 0; i <= dataReload.length - 1; i++) {
+            dataReload[i].onclick = function() {
+                setTimeout(function () {
+                    location.reload(true);
+                }, 150) // adjust the timer that works for you (1000 = 1 second)
+            }
+        }
+    </script>
+</body>
+</html>
