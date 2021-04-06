@@ -10,11 +10,11 @@
 
     <canvas id="c"></canvas>
 
-<script src=""></script>
 <script type="module">
-
-import * as THREE from './build/three.module.js';
-//import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r125/build/three.module.js';         
+// worked only with node http-server
+//import * as THREE from './build/three.module.js';
+// worked as cdn, as local file 
+import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r125/build/three.module.js';
 
 function main() {
     const canvas = document.querySelector('#c');
