@@ -7,12 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Tour of heroes!'
-  title2: number = sum(2, 3)
 }
-
-function sum(a: number, b: number): number {
-  console.log(ats(2,3))
-  return a + b
-}
-
-let ats = (a: number, b: number):number => a * b
