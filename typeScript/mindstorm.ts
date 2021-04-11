@@ -10,12 +10,12 @@ let arsr2: number[] = [234, 23, 45]
 function majority(a: Array<number>, b: number[]): number {
     let temp: number[]
 
-    for (let i: number in a ) {
+    for (let i in a ) {
         b.forEach(element => {
             console.log(i + element)
         });
     }
-    //return 0
+    return 0
 }
 
 majority(arsr1, arsr2)
