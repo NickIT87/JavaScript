@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { route } from 'next/dist/next-server/server/router';
 
 // sfc snippet, stateless functional component
 const NotFound = () => {
