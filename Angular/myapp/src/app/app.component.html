@@ -1,2 +1,5 @@
 <h1>Hello world!</h1>
 <p>{{ title }}</p>
+<h3>Event counter: {{ counter }}</h3>
+<button (click)='handleEvent()'>Click Event</button>
+<input placeholder="keydown Event" (keydown)='handleEvent()'/>

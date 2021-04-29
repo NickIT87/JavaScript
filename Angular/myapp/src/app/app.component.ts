@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myapp';
+
+  counter: number = 0
+
+  handleEvent() {
+    this.counter++
+    console.log('Event called!')
+  }
 }
