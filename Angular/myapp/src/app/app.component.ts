@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myapp';
-
+  customprop = 'custom property binding'
   counter: number = 0
 
   handleEvent() {
     this.counter++
-    console.log('Event called!')
+    console.log('Event called!', this.title)
   }
 }
