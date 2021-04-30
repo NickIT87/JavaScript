@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'myapp';
+  title = 'Hello world how are you doing ?';
   customprop = 'custom property binding'
   counter: number = 0
   jsonValue = {
