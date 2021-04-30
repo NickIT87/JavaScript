@@ -3,6 +3,8 @@
 <h3>Event counter: {{ counter }}</h3>
 <button (click)='handleEvent()'>Click Event</button>
 <input placeholder="keydown Event" [(ngModel)]='title' (keydown)='handleEvent()'/>
-
 <h3>Property binding: {{ customprop }}</h3>
 <input placeholder="property binding" [ngModel]='customprop' />
+<h3>jsonValue: {{ jsonValue.a }} {{ jsonValue.b }}</h3>
+<h3>{{ jsonValue | json }}</h3>
+<h3>{{ newDate | date:'full'}}</h3>

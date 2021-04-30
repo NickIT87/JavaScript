@@ -9,6 +9,12 @@ export class AppComponent {
   title = 'myapp';
   customprop = 'custom property binding'
   counter: number = 0
+  jsonValue = {
+    a: 'hello',
+    b: 'world'
+  }
+
+  newDate = new Date()
 
   handleEvent() {
     this.counter++
