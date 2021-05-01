@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ export class AppComponent {
   }
 
   newDate = new Date()
+
+  constructor(private httpService: HttpService) { }
 
   handleEvent() {
     this.counter++
