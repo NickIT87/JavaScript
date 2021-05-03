@@ -17,10 +17,13 @@ export class AppComponent {
 
   newDate = new Date()
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {}
 
   handleEvent() {
     this.counter++
     console.log('Event called!', this.title)
+  }
+  handleService() {
+    this.httpService.getRequest('https://jsonplaceholder.typicode.com/todos/1')
   }
 }
