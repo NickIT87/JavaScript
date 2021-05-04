@@ -25,5 +25,9 @@ export class AppComponent {
   }
   handleService() {
     this.httpService.getRequest('https://jsonplaceholder.typicode.com/todos/1')
+    .subscribe((response) => {
+      console.log(response)
+      this.jsonValue = response
+    })
   }
 }
