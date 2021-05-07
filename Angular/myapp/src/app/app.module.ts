@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { StorageService } from './storage.service';
 import { TruncatePipe } from './truncate.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TruncatePipe
+    TruncatePipe,
+    UserComponent
   ],
   imports: [
     BrowserModule,

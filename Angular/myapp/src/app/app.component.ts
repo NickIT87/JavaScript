@@ -14,6 +14,11 @@ export class AppComponent {
     a: 'hello',
     b: 'world'
   }
+  user = {
+    name: 'John',
+    age: '32',
+    id: 0
+  }
 
   newDate = new Date()
 
