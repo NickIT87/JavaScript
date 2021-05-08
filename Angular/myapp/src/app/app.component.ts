@@ -14,7 +14,7 @@ export class AppComponent {
     a: 'hello',
     b: 'world'
   }
-  user = {
+  userObject = {
     name: 'John',
     age: '32',
     id: 0
@@ -34,5 +34,8 @@ export class AppComponent {
       console.log(response)
       this.jsonValue = response
     })
+  }
+  handleComponentEvent(event: any) {
+    console.log(event)
   }
 }
