@@ -16,4 +16,4 @@
 <input placeholder="user" [(ngModel)]="userObject.name"/>
 <input placeholder="user" [(ngModel)]="userObject.age"/>
 <input placeholder="user" [(ngModel)]="userObject.id"/>
-<app-user [user]="userObject" (userEvent)="handleComponentEvent($event)"></app-user>
+<app-user [user]="userObject" (userCustomEvent)="handleComponentEvent($event)"></app-user>

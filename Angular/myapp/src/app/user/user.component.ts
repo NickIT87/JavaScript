@@ -15,10 +15,10 @@ export class UserComponent implements OnInit {
 
   @Input() user: UserInterface;
 
-  @Output() userEvent: EventEmitter<UserInterface>;
+  @Output() userCustomEvent: EventEmitter<UserInterface>;
   
   constructor() { 
-    this.userEvent = new EventEmitter<UserInterface>()
+    this.userCustomEvent = new EventEmitter<UserInterface>()
     this.user = {} as UserInterface
   }
 
@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
   }
 
   sendUserEvent(): void {
-    this.userEvent.emit(this.user)
+    this.userCustomEvent.emit(this.user)
   }
 
 }
