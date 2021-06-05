@@ -13,8 +13,10 @@ interface UserInterface {
 })
 export class UserComponent implements OnInit {
 
-  @Input() user: UserInterface
-  @Output() userEvent: EventEmitter<UserInterface>
+  @Input() user: UserInterface;
+
+  @Output() userEvent: EventEmitter<UserInterface>;
+  
   constructor() { 
     this.userEvent = new EventEmitter<UserInterface>()
     this.user = {} as UserInterface
