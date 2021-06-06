@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Hello world how are you doing ?';
   customprop = 'custom property binding'
   counter: number = 0
@@ -22,6 +22,8 @@ export class AppComponent {
   }
 
   newDate = new Date()
+  posts: any = this.httpService.getRequest('https://jsonplaceholder.typicode.com/posts')
+  showUser: boolean = true
 
   constructor(private httpService: HttpService) {}
 
@@ -38,5 +40,9 @@ export class AppComponent {
   }
   handleComponentEvent(event: any) {
     console.log(event)
+  }
+
+  ngOnInit() {
+    // this.getPosts()
   }
 }
