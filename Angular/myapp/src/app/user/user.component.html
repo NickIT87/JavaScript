@@ -4,4 +4,6 @@
 <p>{{user.age}}</p>
 <p>{{user.id}}</p>
 
+<div [ngClass]="isColored ? 'colored' : ''">Attribute Directive</div>
+
 <button (click)="sendUserEvent()">SendUserEvent</button>

@@ -17,7 +17,8 @@ export class AppComponent {
   userObject = {
     name: 'John',
     age: '32',
-    id: 0
+    id: 0,
+    isColored: true
   }
 
   newDate = new Date()
