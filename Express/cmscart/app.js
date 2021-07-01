@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const config = require('./config/database')
 
 // Connect to db
-mongoose.connect(config.database);
+mongoose.connect(config.database, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -22,7 +22,9 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
-    res.send('Working')
+    res.render('index', {
+        title: 'Home'
+    })
 })
 
 // Start the server
