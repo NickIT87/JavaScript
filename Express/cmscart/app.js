@@ -37,6 +37,8 @@ app.use(session({
 }))
 
 // Express Validator middleware
+// npm uninstall express-validator
+// npm install express-validator@5.3.1
 app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
         let namespace = param.split('.')
