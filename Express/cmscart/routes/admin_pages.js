@@ -1,15 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
-// Get Page model
+// GET Page model
 const Page = require('../models/page')
 
-
+// GET pages index
 router.get('/', (req, res) => {
-    res.send("admin area")
+    Page.find({}).sort({sorting: 1}).exec((err, pages) => {
+        res.render('admin/pages', {
+            pages: pages
+        })
+    })
 })
 
-
+// GET add page
 router.get('/add-page', (req, res) => {
     let title = ""
     let slug = ""
@@ -22,7 +26,7 @@ router.get('/add-page', (req, res) => {
     })
 })
 
-
+// POST add page and save to DB
 router.post('/add-page', (req, res) => {
     
     req.checkBody('title', 'Title must have a value.').notEmpty();
@@ -62,7 +66,7 @@ router.post('/add-page', (req, res) => {
                     title: title,
                     slug: slug,
                     content: content,
-                    sorting: 0
+                    sorting: 100
                 })
                 page.save((err) => {
                     if (err) 
