@@ -80,5 +80,32 @@ router.post('/add-page', (req, res) => {
 })
 
 
+// POST reorder pages
+router.post('/reorder-pages', (req, res) => {
+    //console.log(req.body)
+    let ids = req.body['id[]']
+    let count = 0;
+
+    for (let i = 0; i < ids.length; i++) {
+        let id = ids[i]
+        count++
+        // node async for reorder pages
+        (function(count) {
+            Page.findById(id, (err, page) => {
+                if (err) {
+                    console.log("ERROR POST reorder pages: ", err)
+                }
+                page.sorting = count
+                page.save((err) => {
+                    if (err) {
+                        return console.log(err)
+                    }
+                })
+            })
+        })(count);
+    }
+})
+
+
 // Exports
 module.exports = router
