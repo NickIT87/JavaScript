@@ -107,5 +107,22 @@ router.post('/reorder-pages', (req, res) => {
 })
 
 
+// GET edit page
+router.get('/edit-page/:slug', (req, res) => {
+    
+    Page.findOne({slug: req.params.slug}, (err, page) => {
+        if (err)
+            return console.log(err)
+
+        res.render('admin/edit_page', {
+            title: page.title,
+            slug: page.slug,
+            content: page.content,
+            id: page._id
+        })
+    })
+})
+
+
 // Exports
 module.exports = router
