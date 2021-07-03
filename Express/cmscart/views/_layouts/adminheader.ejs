@@ -26,3 +26,15 @@
 
 <div class="container">
     <%- messages('messages', locals) %>
+    
+    <% if (errors) {%>
+        <div class="messages" style="margin-top: 0.5rem;">
+            <% errors.forEach(function(error) {%>
+            <div class="alert alert-danger">
+                <%= error.msg %>
+            </div>
+            <% });%>
+        </div>
+    <% }%>
+    
+    

@@ -24,6 +24,9 @@ app.set('view engine', 'ejs')
 // Set public folder
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Set global errors variable
+app.locals.errors = null
+
 // Body parser deprecated - express middleware
 app.use(express.urlencoded({extended: false}))
 app.use(express.json());
