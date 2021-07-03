@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+// Get Page model
+const Page = require('../models/page')
+
 
 router.get('/', (req, res) => {
     res.send("admin area")
@@ -43,8 +46,33 @@ router.post('/add-page', (req, res) => {
         })
     } else {
         console.log('.../add-page req.post success')
+        Page.findOne({slug: slug}, (err, page) => {
+            if (err) {
+                console.log("ERROR router/post", err)
+            }
+            if (page) {
+                req.flash('danger', 'Page slug exists, choose another.')
+                res.render('admin/add_page', {
+                    title: title,
+                    slug: slug,
+                    content: content
+                })
+            } else {
+                let page = new Page({
+                    title: title,
+                    slug: slug,
+                    content: content,
+                    sorting: 0
+                })
+                page.save((err) => {
+                    if (err) 
+                        return console.log(err)
+                    req.flash('success', 'Page added!')
+                    res.redirect('/admin/pages')
+                })
+            }
+        })
     }
-        
 })
 
 
