@@ -4,14 +4,15 @@ const router = express.Router()
 // GET Category model
 const Category = require('../models/category')
 
-// GET pages index
+// GET category index
 router.get('/', (req, res) => {
-    res.send('cats index')
-    // Page.find({}).sort({sorting: 1}).exec((err, pages) => {
-    //     res.render('admin/pages', {
-    //         pages: pages
-    //     })
-    // })
+    Category.find((err, categories) => {
+        if (err)
+            return console.log(err)
+        res.render('admin/categories', {
+            categories: categories
+        })
+    })
 })
 
 // // GET add page
