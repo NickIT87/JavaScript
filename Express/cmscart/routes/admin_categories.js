@@ -15,71 +15,56 @@ router.get('/', (req, res) => {
     })
 })
 
-// // GET add page
-// router.get('/add-page', (req, res) => {
-//     let title = ""
-//     let slug = ""
-//     let content = ""
-    
-//     res.render('admin/add_page', {
-//         title: title,
-//         slug: slug,
-//         content: content
-//     })
-// })
+// GET add category
+router.get('/add-category', (req, res) => {
+    let title = ""
+    res.render('admin/add_category', {
+        title: title,
+    })
+})
 
-// // POST add page and save to DB
-// router.post('/add-page', (req, res) => {
+// POST add category and save to DB
+router.post('/add-category', (req, res) => {
     
-//     req.checkBody('title', 'Title must have a value.').notEmpty();
-//     req.checkBody('content', 'Content must have a value.').notEmpty();
+    req.checkBody('title', 'Title must have a value.').notEmpty();
+        
+    let title = req.body.title
+    let slug = title.replace(/\s+/g, '-').toLowerCase();
     
-//     let title = req.body.title
-//     let slug = req.body.slug.replace(/\s+/g, '-').toLowerCase();
-//     if (slug == "") {
-//         slug = title.replace(/\s+/g, '-').toLowerCase()
-//     } 
-//     let content = req.body.content
-//     let errors = req.validationErrors();
+    let errors = req.validationErrors();
 
-//     if (errors) {
-//         console.log('errors:', errors)
-//         res.render('admin/add_page', {
-//             errors: errors,
-//             title: title,
-//             slug: slug,
-//             content: content
-//         })
-//     } else {
-//         //console.log('.../add-page req.post success')
-//         Page.findOne({slug: slug}, (err, page) => {
-//             if (err) {
-//                 console.log("ERROR router/post", err)
-//             }
-//             if (page) {
-//                 req.flash('danger', 'Page slug exists, choose another.')
-//                 res.render('admin/add_page', {
-//                     title: title,
-//                     slug: slug,
-//                     content: content
-//                 })
-//             } else {
-//                 let page = new Page({
-//                     title: title,
-//                     slug: slug,
-//                     content: content,
-//                     sorting: 100
-//                 })
-//                 page.save((err) => {
-//                     if (err) 
-//                         return console.log(err)
-//                     req.flash('success', 'Page added!')
-//                     res.redirect('/admin/pages')
-//                 })
-//             }
-//         })
-//     }
-// })
+    if (errors) {
+        console.log('errors:', errors)
+        res.render('admin/add_category', {
+            errors: errors,
+            title: title
+        })
+    } else {
+        //console.log('.../add-page req.post success')
+        Category.findOne({slug: slug}, (err, category) => {
+            if (err) {
+                console.log("ERROR add-category router/post", err)
+            }
+            if (category) {
+                req.flash('danger', 'Category title exists, choose another.')
+                res.render('admin/add_category', {
+                    title: title
+                })
+            } else {
+                let category = new Category({
+                    title: title,
+                    slug: slug
+                })
+                category.save((err) => {
+                    if (err) 
+                        return console.log(err)
+                    req.flash('success', 'Category added!')
+                    res.redirect('/admin/categories')
+                })
+            }
+        })
+    }
+})
 
 
 // // POST reorder pages
