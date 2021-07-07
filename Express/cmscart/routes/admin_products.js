@@ -24,18 +24,21 @@ router.get('/', (req, res) => {
     })
 })
 
-// // GET add page
-// router.get('/add-page', (req, res) => {
-//     let title = ""
-//     let slug = ""
-//     let content = ""
+// GET add product
+router.get('/add-product', (req, res) => {
+    let title = ""
+    let desc = ""
+    let price = ""
     
-//     res.render('admin/add_page', {
-//         title: title,
-//         slug: slug,
-//         content: content
-//     })
-// })
+    Category.find((err, categories) => {
+        res.render('admin/add_product', {
+            title: title,
+            desc: desc,
+            categories: categories,
+            price: price
+        })
+    })
+})
 
 // // POST add page and save to DB
 // router.post('/add-page', (req, res) => {
