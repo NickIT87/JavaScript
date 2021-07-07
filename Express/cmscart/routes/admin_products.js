@@ -13,7 +13,8 @@ const Category = require('../models/category')
 // GET products index
 router.get('/', (req, res) => {
     let count
-    Product.count((err, c) => {
+    // Product.count is deprecated. USE: '.estimatedDocumentCount' or '.countDocuments'
+    Product.estimatedDocumentCount((err, c) => {
         count = c
     })
     Product.find((err, products) => {
