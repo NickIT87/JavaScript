@@ -6,15 +6,23 @@ const resizeImg = require('resize-img')
 
 // GET Product model
 const Product = require('../models/product')
+// GET Category model
+const Category = require('../models/category')
 
-// // GET pages index
-// router.get('/', (req, res) => {
-//     Page.find({}).sort({sorting: 1}).exec((err, pages) => {
-//         res.render('admin/pages', {
-//             pages: pages
-//         })
-//     })
-// })
+
+// GET products index
+router.get('/', (req, res) => {
+    let count
+    Product.count((err, c) => {
+        count = c
+    })
+    Product.find((err, products) => {
+        res.render('admin/products', {
+            products: products,
+            count: count
+        })
+    })
+})
 
 // // GET add page
 // router.get('/add-page', (req, res) => {
