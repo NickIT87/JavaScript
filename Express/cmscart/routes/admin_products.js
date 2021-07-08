@@ -128,48 +128,44 @@ router.post('/add-product', (req, res) => {
 })
 
 
-// // POST reorder pages
-// router.post('/reorder-pages', (req, res) => {
-//     //console.log(req.body)
-//     let ids = req.body['id[]']
-//     let count = 0;
-
-//     for (let i = 0; i < ids.length; i++) {
-//         let id = ids[i]
-//         count++
-//         // node async for reorder pages
-//         (function(count) {
-//             Page.findById(id, (err, page) => {
-//                 if (err) {
-//                     console.log("ERROR POST reorder pages: ", err)
-//                 }
-//                 page.sorting = count
-//                 page.save((err) => {
-//                     if (err) {
-//                         return console.log(err)
-//                     }
-//                 })
-//             })
-//         })(count);
-//     }
-// })
-
-
-// // GET edit page
-// router.get('/edit-page/:id', (req, res) => {
+// GET edit product
+router.get('/edit-product/:id', (req, res) => {
     
-//     Page.findById(req.params.id, (err, page) => {
-//         if (err)
-//             return console.log(err)
+    let errors;
+    if (req.session.errors) 
+        errors = req.session.errors
+    req.session.errors = null
 
-//         res.render('admin/edit_page', {
-//             title: page.title,
-//             slug: page.slug,
-//             content: page.content,
-//             id: page._id
-//         })
-//     })
-// })
+    Category.find((err, categories) => {
+        Product.findById(req.params.id, (err, p) => {
+            if (err) {
+                console.log(err);
+                res.redirect('/admin/products')
+            } else {
+                let galleryDir = 'public/product_images/' + p._id + '/gallery'
+                let galleryImages = null
+                fs.readdir(galleryDir, (err, files) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        galleryImages = files
+
+                        res.render('admin/edit_product', {
+                            title: p.title,
+                            errors: errors,
+                            desc: p.desc,
+                            categories: categories,
+                            category: p.category.replace(/\s+/g, '-').toLowerCase(),
+                            price: p.price,
+                            image: p.image,
+                            galleryImages: galleryImages
+                        })
+                    }
+                })
+            }
+        })
+    })
+})
 
 
 // // POST edit page
