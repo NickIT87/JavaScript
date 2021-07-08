@@ -9,3 +9,7 @@
 #imgPreview {
     margin: 20px;
 }
+
+#noimage, #productimage {
+    width: 100px;
+}
