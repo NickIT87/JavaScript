@@ -158,7 +158,8 @@ router.get('/edit-product/:id', (req, res) => {
                             category: p.category.replace(/\s+/g, '-').toLowerCase(),
                             price: p.price,
                             image: p.image,
-                            galleryImages: galleryImages
+                            galleryImages: galleryImages,
+                            id: p._id
                         })
                     }
                 })
@@ -168,63 +169,77 @@ router.get('/edit-product/:id', (req, res) => {
 })
 
 
-// // POST edit page
-// router.post('/edit-page/:id', (req, res) => {
+// POST edit product
+router.post('/edit-product/:id', (req, res) => {
+    let imageFile = ""
+    if (req.files && typeof req.files.image !== "undefined"){
+        imageFile = req.files.image.name;    
+    }
     
-//     req.checkBody('title', 'Title must have a value.').notEmpty();
-//     req.checkBody('content', 'Content must have a value.').notEmpty();
+    req.checkBody('title', 'Title must have a value.').notEmpty()
+    req.checkBody('desc', 'Description must have a value.').notEmpty()
+    req.checkBody('price', 'Price must have a value.').isDecimal()
+    req.checkBody('image', 'You must upload an image').isImage(imageFile)
     
-//     let title = req.body.title
-//     let slug = req.body.slug.replace(/\s+/g, '-').toLowerCase();
-//     if (slug == "") {
-//         slug = title.replace(/\s+/g, '-').toLowerCase()
-//     } 
-//     let content = req.body.content
-//     let id = req.params.id
-//     let errors = req.validationErrors();
+    let title = req.body.title
+    let slug = title.replace(/\s+/g, '-').toLowerCase()
+    let desc = req.body.desc
+    let price = req.body.price
+    let category = req.body.category
+    let pimage = req.body.pimage
+    let id = req.params.id
+    let errors = req.validationErrors()
 
-//     if (errors) {
-//         console.log('errors:', errors)
-//         res.render('admin/edit_page', {
-//             errors: errors,
-//             title: title,
-//             slug: slug,
-//             content: content,
-//             id: id
-//         })
-//     } else {
-//         //console.log('.../edit-page req.post success')
-//         Page.findOne({slug: slug, _id: {'$ne': id}}, (err, page) => {
-//             if (err) {
-//                 console.log("ERROR router/post", err)
-//             }
-//             if (page) {
-//                 req.flash('danger', 'Page slug exists, choose another.')
-//                 res.render('admin/edit_page', {
-//                     title: title,
-//                     slug: slug,
-//                     content: content,
-//                     id: id
-//                 })
-//             } else {
-//                 Page.findById(id, (err, page) => {
-//                     if (err)
-//                         return console.log(err)
-//                     page.title = title
-//                     page.slug = slug
-//                     page.content = content
+    if (errors) {
+        req.session.errors = errors
+        res.redirect('/admin/products/edit-product/' + id)
+    } else {
+        Product.findOne({slug: slug, _id:{'$ne':id}}, (err, p) => {
+            if (err)
+                console.log(err)
+            
+            if (p) {
+                req.flash('danger', 'Product title exists, choose another.')
+                res.redirect('/admin/products/edit-product/' + id)
+            } else {
+                Product.findById(id, (err, p) => {
+                    if (err)
+                        console.log(err)
+                    
+                    p.title = title
+                    p.slug = slug
+                    p.desc = desc
+                    p.price = parseFloat(price).toFixed(2)
+                    p.category = category
+                    if (imageFile != "") {
+                        p.image = imageFile
+                    }
+                    p.save((err) => {
+                        if (err)
+                            console.log(err)
 
-//                     page.save((err) => {
-//                         if (err) 
-//                             return console.log(err)
-//                         req.flash('success', 'Page edited successful!')
-//                         res.redirect('/admin/pages/edit-page/' + id)
-//                     })
-//                 })
-//             }
-//         })
-//     }
-// })
+                        if (imageFile != "") {
+                            if (pimage != "") {
+                                fs.remove('public/product_images/' + id + '/' + pimage, (err) => {
+                                    if (err)
+                                        console.log(err)
+                                    
+                                })
+                            }
+                            let productImage = req.files.image
+                            let path = 'public/product_images/' + id + '/' + imageFile
+                            productImage.mv(path, (err) => {
+                                return console.log(err)
+                            })                        
+                        }
+                        req.flash('success', 'Product edited.')
+                        res.redirect('/admin/products/edit-product/' + id)
+                    })
+                })
+            }
+        })
+    }
+})
 
 
 // // GET delete page

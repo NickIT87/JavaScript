@@ -10,6 +10,11 @@
     margin: 20px;
 }
 
+#currentImage {
+    margin: 20px;
+    width: 100px;
+}
+
 #noimage, #productimage {
     width: 100px;
 }
