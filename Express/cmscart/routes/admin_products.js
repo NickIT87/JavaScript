@@ -242,6 +242,26 @@ router.post('/edit-product/:id', (req, res) => {
 })
 
 
+// POST product gallery
+router.post('/product-gallery/:id', (req, res) => {
+    let productImage = req.files.file
+    let id = req.params.id
+    let path = 'public/product_images/' + id + '/gallery/' + req.files.file.name
+    let thumbsPath = 'public/product_images/' + id + '/gallery/thumbs/' + req.files.file.name
+
+    productImage.mv(path, (err) => {
+        if (err)
+            console.log(err)
+
+        resizeImg(fs.readFileSync(path), {width: 100}).then((buf) => {
+            fs.writeFileSync(thumbsPath, buf)
+        })
+    })
+
+    res.sendStatus(200)
+})
+
+
 // // GET delete page
 // router.get('/delete-page/:id', (req, res) => {
 //     Page.findByIdAndRemove(req.params.id, (err) => {
