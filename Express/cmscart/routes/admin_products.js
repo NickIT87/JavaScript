@@ -284,15 +284,25 @@ router.get('/delete-image/:image', (req, res) => {
 })
 
 
-// // GET delete page
-// router.get('/delete-page/:id', (req, res) => {
-//     Page.findByIdAndRemove(req.params.id, (err) => {
-//         if (err)
-//             return console.log(err)
-//         req.flash('success', 'Page deleted!')
-//         res.redirect('/admin/pages/')
-//     })
-// })
+// GET delete product
+router.get('/delete-product/:id', (req, res) => {
+    
+    let id = req.params.id
+    let path = 'public/product_images/' + id
+
+    fs.remove(path, (err) => {
+        if (err) {
+            console.log(err)
+        } else { 
+            Product.findByIdAndRemove(id, (err) => {
+                if (err)
+                    return console.log(err)
+                req.flash('success', 'Product deleted.')
+                res.redirect('/admin/products/')
+            })
+        }
+    })
+})
 
 
 // Exports
