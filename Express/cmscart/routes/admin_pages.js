@@ -71,6 +71,15 @@ router.post('/add-page', (req, res) => {
                 page.save((err) => {
                     if (err) 
                         return console.log(err)
+                    
+                    Page.find({}).sort({sorting: 1}).exec((err, pages) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            req.app.locals.pages = pages
+                        }
+                    })
+
                     req.flash('success', 'Page added!')
                     res.redirect('/admin/pages')
                 })
@@ -80,10 +89,8 @@ router.post('/add-page', (req, res) => {
 })
 
 
-// POST reorder pages
-router.post('/reorder-pages', (req, res) => {
-    //console.log(req.body)
-    let ids = req.body['id[]']
+// Sort pages function
+function sortPages(ids, callback) {
     let count = 0;
 
     for (let i = 0; i < ids.length; i++) {
@@ -97,13 +104,33 @@ router.post('/reorder-pages', (req, res) => {
                 }
                 page.sorting = count
                 page.save((err) => {
-                    if (err) {
+                    if (err) 
                         return console.log(err)
+                    ++count
+                    if (count >= ids.length) {
+                        callback()
                     }
                 })
             })
         })(count);
     }
+}
+
+
+// POST reorder pages
+router.post('/reorder-pages', (req, res) => {
+    //console.log(req.body)
+    let ids = req.body['id[]']
+    
+    sortPages(ids, () => {
+        Page.find({}).sort({sorting: 1}).exec((err, pages) => {
+            if (err) {
+                console.log(err)
+            } else {
+                req.app.locals.pages = pages
+            }
+        })
+    })
 })
 
 
@@ -173,6 +200,15 @@ router.post('/edit-page/:id', (req, res) => {
                     page.save((err) => {
                         if (err) 
                             return console.log(err)
+
+                        Page.find({}).sort({sorting: 1}).exec((err, pages) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                req.app.locals.pages = pages
+                            }
+                        })
+
                         req.flash('success', 'Page edited successful!')
                         res.redirect('/admin/pages/edit-page/' + id)
                     })
@@ -188,6 +224,15 @@ router.get('/delete-page/:id', (req, res) => {
     Page.findByIdAndRemove(req.params.id, (err) => {
         if (err)
             return console.log(err)
+
+        Page.find({}).sort({sorting: 1}).exec((err, pages) => {
+            if (err) {
+                console.log(err)
+            } else {
+                req.app.locals.pages = pages
+            }
+        })
+
         req.flash('success', 'Page deleted!')
         res.redirect('/admin/pages/')
     })
