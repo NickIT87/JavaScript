@@ -117,14 +117,16 @@ app.use(function (req, res, next) {
 
 
 // Set routes
-const pages = require('./routes/pages')
-const adminPages = require('./routes/admin_pages')
-const adminCategories = require('./routes/admin_categories')
-const adminProducts = require('./routes/admin_products')
+const pages = require('./routes/pages.js')
+const products = require('./routes/products.js')
+const adminPages = require('./routes/admin_pages.js')
+const adminCategories = require('./routes/admin_categories.js')
+const adminProducts = require('./routes/admin_products.js')
 
 app.use('/admin/pages', adminPages)
 app.use('/admin/categories', adminCategories)
 app.use('/admin/products', adminProducts)
+app.use('/products', products)
 app.use('/', pages)
 
 

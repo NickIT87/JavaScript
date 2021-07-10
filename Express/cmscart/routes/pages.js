@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
         if (err) {
             console.log(err)
         }
-        
         res.render('index', {
             title: page.title,
             content: page.content
