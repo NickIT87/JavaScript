@@ -44,6 +44,18 @@ Page.find({}).sort({sorting: 1}).exec((err, pages) => {
     }
 })
 
+// Get Category model
+const Category = require('./models/category')
+
+// Get all categories to pass to header.ejs
+Category.find((err, categories) => {
+    if (err) {
+        console.log(err)
+    } else {
+        app.locals.categories = categories
+    }
+})
+
 // Express fileUpload middleware
 app.use(fileUpload())
 
