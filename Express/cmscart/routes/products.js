@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const fs = require('fs-extra')
 // Get Page model
 const Product = require('../models/product')
 // Get Category model
@@ -36,6 +37,33 @@ router.get('/:category', (req, res) => {
             })
         })
     }) 
+})
+
+
+// GET product details
+router.get('/:category/:product', (req, res) => {
+    let galleryImages = null;
+    
+    Product.findOne({slug: req.params.product}, (err, product) => {
+        if (err) {
+            console.log(err)
+        } else {
+            let galleryDir = 'public/product_images/' + product._id + '/gallery'
+
+            fs.readdir(galleryDir, (err, files) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    galleryImages = files
+                    res.render('product', {
+                        title: product.title,
+                        p: product,
+                        galleryImages: galleryImages
+                    })
+                }
+            })
+        }
+    })
 })
 
 
