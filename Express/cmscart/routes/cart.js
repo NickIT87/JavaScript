@@ -46,5 +46,14 @@ router.get('/add/:product', (req, res) => {
 })
 
 
+// GET checkout view page
+router.get('/checkout', (req, res) => {
+    res.render('checkout', {
+        title: 'Checkout',
+        cart: req.session.cart
+    })
+})
+
+
 // Exports
 module.exports = router

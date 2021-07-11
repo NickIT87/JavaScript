@@ -33,3 +33,7 @@ ul.gallery.li {
     display: inline-block;
     /*list-style: none !important; */
 }
+
+table.alignmiddle td {
+    vertical-align: middle !important;
+}

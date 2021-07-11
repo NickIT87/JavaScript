@@ -23,3 +23,11 @@ ul.gallery li {
     margin: 20;
     list-style: none;
 }
+
+img.cpi {
+    width: 100px;
+}
+
+table.alignmiddle td {
+    vertical-align: middle !important;
+}
