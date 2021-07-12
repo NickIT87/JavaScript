@@ -18,7 +18,7 @@ router.get('/add/:product', (req, res) => {
                 title: slug,
                 qty: 1,
                 price: parseFloat(p.price).toFixed(2),
-                image: '/product_images/' + p.id + '/' + p.image
+                image: p.image==""?'/images/noimage.png':'/product_images/'+p.id+'/'+p.image
             })
         } else {
             let cart = req.session.cart
@@ -35,7 +35,7 @@ router.get('/add/:product', (req, res) => {
                     title: slug,
                     qty: 1,
                     price: parseFloat(p.price).toFixed(2),
-                    image: '/product_images/' + p.id + '/' + p.image
+                    image: p.image==""?'/images/noimage.png':'/product_images/'+p.id+'/'+p.image
                 })
             }
         }
