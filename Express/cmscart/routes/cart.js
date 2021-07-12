@@ -93,5 +93,13 @@ router.get('/update/:product', (req, res) => {
 })
 
 
+// GET clear cart
+router.get('/clear', (req, res) => {
+    delete req.session.cart
+    req.flash('success', 'Cart cleared.')
+    res.redirect('/cart/checkout')
+})
+
+
 // Exports
 module.exports = router
