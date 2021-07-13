@@ -38,7 +38,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/cart/checkout">My Cart(
+                    <a class="nav-link" href="/cart/checkout" style="margin-right: 2rem;">My Cart(
                         <% if (typeof cart !== "undefined") { %>
                             <%= cart.length %>
                         <% } else {%>
@@ -46,6 +46,8 @@
                         <% } %>
                     )</a>
                 </li>
+                <li><a class="nav-link" href="/users/register">Register</a></li>
+                <li><a class="nav-link" href="/users/login">Login</a></li>
             </ul>
         </div>
     </div>
