@@ -5,6 +5,7 @@ const config = require('./config/database')
 const session = require('express-session')
 const expressValidator = require('express-validator')
 const fileUpload = require('express-fileupload')
+const passport = require('passport')
 
 
 // Connect to db
@@ -114,6 +115,12 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next();
 })
+
+// Passport Config
+require('./config/passport')(passport)
+// Passport Middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.get('*', (req, res, next) => {
     res.locals.cart = req.session.cart
