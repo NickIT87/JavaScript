@@ -46,8 +46,15 @@
                         <% } %>
                     )</a>
                 </li>
-                <li><a class="nav-link" href="/users/register">Register</a></li>
-                <li><a class="nav-link" href="/users/login">Login</a></li>
+                <% if (user) { %>
+                    <li><a class="nav-link" href="/users/logout"><%= user.name %>_logout</a></li>        
+                <% } else { %>
+                    <li><a class="nav-link" href="/users/register">Register</a></li>
+                    <li><a class="nav-link" href="/users/login">Login</a></li>
+                <% } %>
+                <% if (user && user.admin == 1) { %>
+                    <li><a class="nav-link" href="/admin/pages">admin_Area</a></li>        
+                <% } %>
             </ul>
         </div>
     </div>
