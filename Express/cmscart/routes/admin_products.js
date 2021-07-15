@@ -4,6 +4,8 @@ const mkdrp = require('mkdirp')
 const fs = require('fs-extra')
 const resizeImg = require('resize-img')
 
+const auth = require('../config/auth')
+const isAdmin = auth.isAdmin
 // GET Product model
 const Product = require('../models/product')
 // GET Category model
@@ -11,7 +13,7 @@ const Category = require('../models/category')
 
 
 // GET products index
-router.get('/', (req, res) => {
+router.get('/', isAdmin, (req, res) => {
     let count
     // Product.count is deprecated. USE: '.estimatedDocumentCount' or '.countDocuments'
     Product.estimatedDocumentCount((err, c) => {
@@ -26,7 +28,7 @@ router.get('/', (req, res) => {
 })
 
 // GET add product
-router.get('/add-product', (req, res) => {
+router.get('/add-product', isAdmin, (req, res) => {
     let title = ""
     let desc = ""
     let price = ""
@@ -129,7 +131,7 @@ router.post('/add-product', (req, res) => {
 
 
 // GET edit product
-router.get('/edit-product/:id', (req, res) => {
+router.get('/edit-product/:id', isAdmin, (req, res) => {
     
     let errors;
     if (req.session.errors) 
@@ -263,7 +265,7 @@ router.post('/product-gallery/:id', (req, res) => {
 
 
 // GET delete image
-router.get('/delete-image/:image', (req, res) => {
+router.get('/delete-image/:image', isAdmin, (req, res) => {
     let originalImage = 'public/product_images/' + req.query.id + '/gallery/' + req.params.image
     let thumbImage = 'public/product_images/' + req.query.id + '/gallery/thumbs/' + req.params.image
 
@@ -285,7 +287,7 @@ router.get('/delete-image/:image', (req, res) => {
 
 
 // GET delete product
-router.get('/delete-product/:id', (req, res) => {
+router.get('/delete-product/:id', isAdmin, (req, res) => {
     
     let id = req.params.id
     let path = 'public/product_images/' + id

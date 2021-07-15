@@ -5,9 +5,12 @@ const fs = require('fs-extra')
 const Product = require('../models/product')
 // Get Category model
 const Category = require('../models/category')
+const auth = require('../config/auth')
+const isUser = auth.isUser
 
 
 // GET all products
+//router.get('/', isUser, (req, res) => {
 router.get('/', (req, res) => {
     Product.find((err, products) => {
         if (err) {
