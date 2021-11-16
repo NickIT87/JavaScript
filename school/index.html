@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа №10</title>
+</head>
+<body>
+<header>
+    <div class="head" style="text-align: center;">
+        <h1 class="task">
+            Тема: Проектирование и создание компьютерной публикации 
+            для подачи результатов самостоятельного исследования.
+        </h1>
+        <hr>
+        <br>
+        <div class="wrapper_std_data">
+            <h3>Работу выполнил: учащийся 9(б/в) класса</h3>
+            <h4>Фамилия Имя</h4>
+        </div>
+        <hr>
+    </div>
+</header>
+
+<main>
+    <div class="content">
+        <h3>
+            Составить краткий анализ качества процесса самообучения
+            в период карантина. В тексте указать Ваше оценочное суждение:
+        </h3>
+        <br>
+        <ol>
+            <li>
+                 о качестве процесса изложения учебного материала
+            </li>
+            <li>
+                о качестве процесса самообучения. Какие результаты достигнуты,
+                какие моменты были упущены.
+            </li>
+            <li>
+                какие моменты в Вашем процессе самоподготовки
+                к изучению определенных предметов можно улучшить.
+            </li>
+        </ol>
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <p>оценочный балл самоподготовки</p>
+                    <p>(на Ваш взгляд)</p>
+                </td>
+                <td>
+                    <p>средний желаемый балл аттестата</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>8</p>
+                </td>
+                <td>
+                    <p>12</p>
+                </td>
+            </tr>
+        </table>
+        <br>
+    </div>    
+</main>
+
+
+<footer>
+    <div class="footer" style="text-align: center;">
+        <hr>
+        <p>Лицей № 35 им. В.Шеймана.</p>
+        <p>Краматорск 2021</p>
+    </div>
+</footer>
+
+<style>
+.task {
+    color: rgb(238, 8, 8);
+    text-shadow: 3px 3px 3px white;
+}
+.wrapper_std_data {
+    color: rgb(233, 64, 13);
+    text-shadow: 3px 3px 3px lightgrey;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.content {
+   background: lightcyan;
+   margin: auto;
+   height: auto;
+   width: 900px;
+}
+
+.footer {
+    background-color: lightblue;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color:black;
+  /* Растягиваем body по высоте html */
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  background: lightgreen;
+}
+
+main {
+  background: lightcyan;
+}
+
+footer {
+  background: black;
+}
+</style>
+</body>
+</html>
