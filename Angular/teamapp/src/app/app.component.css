@@ -65,3 +65,13 @@
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
   }
+
+  .team-container {
+    margin-bottom: 1rem;
+  }
+
+  .team-container ul {
+    border: 00.1rem solid rgba(128, 128, 128, 0.418);
+    margin: 0;
+    padding: 0.5rem;
+  }
