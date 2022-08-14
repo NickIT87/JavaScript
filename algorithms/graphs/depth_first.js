@@ -1,17 +1,17 @@
-// const depthFirstPrint = (graph, source) => {
-//     const stack = [ source ]
-//     console.log(current)
+const depthFirstPrint_iterative = (graph, source) => {
+    const stack = [ source ]
+    console.log(current)
 
-//     while (stack.length > 0) {
-//         const current = stack.pop()
+    while (stack.length > 0) {
+        const current = stack.pop()
 
-//         for (let neighbor of graph[current]) {
-//             stack.push(neighbor)
-//         }
-//     }
-// }
+        for (let neighbor of graph[current]) {
+            stack.push(neighbor)
+        }
+    }
+}
 
-
+// recursive
 const depthFirstPrint = (graph, source) => {
     console.log(source)
     for (let neighbor of graph[source]) {
