@@ -1,9 +1,9 @@
-const depthFirstPrint = (graph, source) => {
+const depthFirstPrint_iterative = (graph, source) => {
     const stack = [ source ]
     
     while (stack.length > 0) {
         const current = stack.pop()
-        console.log("depth: ", current)
+        console.log("depth iterative: ", current)
 
         for (let neighbor of graph[current]) {
             stack.push(neighbor)
@@ -43,6 +43,6 @@ const graph = {
     f: []
 }
 
-depthFirstPrint(graph, 'a')
-breadthFirstPrint(graph, 'a')
-depthFirstPrint_recursive(graph, 'a')
+depthFirstPrint_iterative(graph, 'a')   // acebdf
+breadthFirstPrint(graph, 'a')           // abcdef
+depthFirstPrint_recursive(graph, 'a')   // abdfce
