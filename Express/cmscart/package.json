@@ -23,7 +23,7 @@
     "fs-extra": "^10.0.0",
     "mkdirp": "^0.5.5",
     "mongoose": "^5.13.0",
-    "nodemon": "^2.0.9",
+    "nodemon": "^2.0.20",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "resize-img": "^2.0.0"
